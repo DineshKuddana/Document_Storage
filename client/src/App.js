@@ -21,7 +21,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const result = await axios.get("https://document-storage-b8nk.onrender.com/get-files");
+      const result = await axios.get("http://localhost:5000/get-files");
       if (result.data.status === "Ok") {
         setData(result.data.data);
       } else {
@@ -48,7 +48,7 @@ function App() {
     });
 
     try {
-      const result = await axios.post("https://document-storage-b8nk.onrender.com/upload-files", formData, {
+      const result = await axios.post("http://localhost:5000/upload-files", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (result.data.status === "Ok") {
@@ -117,7 +117,7 @@ function App() {
               
               <td>
                 {item.abstractFile ? (
-                  <a href={`https://document-storage-b8nk.onrender.com/${item.abstractFile}`} target="_blank" rel="noopener noreferrer" className="view">View File</a>
+                  <a href={`http://localhost:5000/files/${item.abstractFile}`} target="_blank" rel="noopener noreferrer" className="view">View File</a>
                 ) : (
                   "No File"
                 )}
